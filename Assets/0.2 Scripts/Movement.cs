@@ -2,35 +2,16 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    public float moveSpeed = 5f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-        }
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.back * moveSpeed * Time.deltaTime;
-        }
+        Vector3 dir = new Vector3(h, 0, v);
+        Debug.Log($"현재 입력 : {dir}");
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        }
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-        }
+        transform.position += dir * moveSpeed * Time.deltaTime;
     }
 }
